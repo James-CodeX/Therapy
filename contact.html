@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Oasis of Well Being</title>
+    <meta name="description" content="Get in touch with our licensed therapist to schedule an appointment or ask questions about our services.">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        /* Additional styles specific to Contact page */
+
+        
+        .contact-section {
+            padding: var(--spacing-xl) 0;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+        
+        .contact-info {
+            background-color: var(--bg-light);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+        }
+        
+        .contact-method {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .contact-method h3 {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .contact-method i {
+            margin-right: var(--spacing-sm);
+            color: var(--primary-color);
+            font-size: 1.25rem;
+        }
+        
+        .office-hours {
+            margin-top: var(--spacing-lg);
+        }
+        
+        .hours-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--bg-dark);
+            border-radius: var(--border-radius-sm);
+            font-family: var(--body-font);
+            transition: border-color var(--transition-fast);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-check {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .form-check input {
+            margin-top: 0.25rem;
+            margin-right: var(--spacing-sm);
+        }
+        
+        .form-check label {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .error {
+            border-color: var(--error) !important;
+        }
+        
+        .error-message {
+            color: var(--error);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+        
+        .success-message {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--success);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            margin-bottom: var(--spacing-md);
+            display: none;
+        }
+        
+        .map-section {
+            padding-top: 0;
+        }
+        
+        .map-container {
+            height: 400px;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Oasis of Well Being</a>
+            </div>
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link active">Contact</a></li>
+                    <li class="nav-item"><a href="booking.html" class="nav-link book-now">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Get in Touch</h1>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h2>Contact Me</h2>
+                        <p>I'm here to answer your questions and help you get started. Feel free to reach out in any of these ways:</p>
+                        
+                        <div class="contact-method">
+                            <h3><i class="fas fa-phone"></i> Phone</h3>
+                            <p>Call or text: <a href="tel:+15551234567">(555) 123-4567</a></p>
+                            <p class="text-light">For non-urgent matters, please expect a response within 24 business hours.</p>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <h3><i class="fas fa-envelope"></i> Email</h3>
+                            <p><a href="mailto:info@oasisofwellbeing.com">info@oasisofwellbeing.com</a></p>
+                            <p class="text-light">Please note that email is not a secure form of communication and should not be used for sharing sensitive information.</p>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <h3><i class="fas fa-map-marker-alt"></i> Office Location</h3>
+                            <address>
+                                123 Serenity Lane, Suite 101<br>
+                                Wellness City, WC 12345
+                            </address>
+                            <p class="text-light">Located in the Wellness Center building, with free parking available.</p>
+                        </div>
+                        
+                        <div class="office-hours">
+                            <h3><i class="fas fa-clock"></i> Office Hours</h3>
+                            <ul class="hours-list">
+                                <li><span>Monday - Friday:</span> <span>9:00 AM - 7:00 PM</span></li>
+                                <li><span>Saturday:</span> <span>10:00 AM - 3:00 PM</span></li>
+                                <li><span>Sunday:</span> <span>Closed</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="emergency-notice">
+                            <h3><i class="fas fa-exclamation-triangle"></i> In Case of Emergency</h3>
+                            <p>If you are experiencing a mental health emergency or crisis, please call 911, go to your nearest emergency room, or contact the National Suicide Prevention Lifeline at 988 or 1-800-273-8255.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h2>Send a Message</h2>
+                        <p>Complete the form below, and I'll get back to you as soon as possible.</p>
+                        
+                        <div class="success-message" id="contact-success">
+                            <p><strong>Thank you for reaching out!</strong> Your message has been received, and I'll respond within 24 business hours.</p>
+                        </div>
+                        
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone" class="form-control">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <input type="text" id="subject" name="subject" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>How did you hear about us?</label>
+                                <select name="referral_source" class="form-control">
+                                    <option value="">Please select</option>
+                                    <option value="search">Search Engine</option>
+                                    <option value="social">Social Media</option>
+                                    <option value="friend">Friend or Family</option>
+                                    <option value="professional">Professional Referral</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-check">
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <label for="consent">I understand that this form is for non-urgent communication only, and that information sent via this form is not completely secure. For emergencies, please call 911 or visit your nearest emergency room. *</label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-section contact-section">
+            <div class="container">
+                <h2 class="text-center">Find Us</h2>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00369368400567!3d40.71312937933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQyJzQ3LjMiTiA3NMKwMDAnMTIuOSJX!5e0!3m2!1sen!2sus!4v1620160263469!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html">Oasis of Well Being</a>
+                    <p>Creating space for healing and growth</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="booking.html">Book Now</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Information</h3>
+                    <address>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Serenity Lane, Suite 101<br>Wellness City, WC 12345</p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+15551234567">(555) 123-4567</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@oasisofwellbeing.com">info@oasisofwellbeing.com</a></p>
+                    </address>
+                </div>
+                <div class="footer-hours">
+                    <h3>Office Hours</h3>
+                    <ul class="hours-list">
+                        <li><span>Monday - Friday:</span> 9:00 AM - 7:00 PM</li>
+                        <li><span>Saturday:</span> 10:00 AM - 3:00 PM</li>
+                        <li><span>Sunday:</span> Closed</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2025 Oasis of Well Being. All rights reserved.</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Contact form validation and submission
+            const contactForm = document.getElementById('contact-form');
+            const successMessage = document.getElementById('contact-success');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Basic validation
+                    let valid = true;
+                    const requiredFields = contactForm.querySelectorAll('[required]');
+                    
+                    requiredFields.forEach(field => {
+                        if (!field.value.trim()) {
+                            valid = false;
+                            field.classList.add('error');
+                            
+                            // Create or update error message
+                            let errorMessage = field.nextElementSibling;
+                            if (!errorMessage || !errorMessage.classList.contains('error-message')) {
+                                errorMessage = document.createElement('div');
+                                errorMessage.classList.add('error-message');
+                                field.parentNode.insertBefore(errorMessage, field.nextSibling);
+                            }
+                            errorMessage.textContent = 'This field is required';
+                        } else {
+                            field.classList.remove('error');
+                            const errorMessage = field.nextElementSibling;
+                            if (errorMessage && errorMessage.classList.contains('error-message')) {
+                                errorMessage.remove();
+                            }
+                        }
+                    });
+                    
+                    // Email validation
+                    const emailField = contactForm.querySelector('#email');
+                    if (emailField && emailField.value.trim()) {
+                        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailPattern.test(emailField.value.trim())) {
+                            valid = false;
+                            emailField.classList.add('error');
+                            
+                            let errorMessage = emailField.nextElementSibling;
+                            if (!errorMessage || !errorMessage.classList.contains('error-message')) {
+                                errorMessage = document.createElement('div');
+                                errorMessage.classList.add('error-message');
+                                emailField.parentNode.insertBefore(errorMessage, emailField.nextSibling);
+                            }
+                            errorMessage.textContent = 'Please enter a valid email address';
+                        }
+                    }
+                    
+                    // Phone validation (if provided)
+                    const phoneField = contactForm.querySelector('#phone');
+                    if (phoneField && phoneField.value.trim()) {
+                        const phonePattern = /^[\d\s\-\+\(\)]{10,15}$/;
+                        if (!phonePattern.test(phoneField.value.trim())) {
+                            valid = false;
+                            phoneField.classList.add('error');
+                            
+                            let errorMessage = phoneField.nextElementSibling;
+                            if (!errorMessage || !errorMessage.classList.contains('error-message')) {
+                                errorMessage = document.createElement('div');
+                                errorMessage.classList.add('error-message');
+                                phoneField.parentNode.insertBefore(errorMessage, phoneField.nextSibling);
+                            }
+                            errorMessage.textContent = 'Please enter a valid phone number';
+                        }
+                    }
+                    
+                    if (valid) {
+                        // Simulate form submission (in a real application, this would be an API call)
+                        const formData = new FormData(contactForm);
+                        const contactData = {};
+                        
+                        for (const [key, value] of formData.entries()) {
+                            contactData[key] = value;
+                        }
+                        
+                        // Show success message
+                        contactForm.reset();
+                        successMessage.style.display = 'block';
+                        
+                        // Scroll to success message
+                        successMessage.scrollIntoView({ behavior: 'smooth' });
+                        
+                        // In a real application, you would send the data to a server
+                        console.log('Contact form data:', contactData);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Oasis of Well Being</title>
+    <meta name="description" content="Explore our range of therapy services including individual counseling, couples therapy, and specialized treatments for anxiety, depression, and trauma.">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        /* Additional styles specific to Services page */
+        
+        .services-section {
+            padding: var(--spacing-xl) 0;
+        }
+        
+        .service-card {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            margin-bottom: var(--spacing-lg);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .service-content {
+            padding: var(--spacing-lg);
+        }
+        
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-normal);
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+        
+        .service-icon {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+            border-radius: 50%;
+            margin-bottom: var(--spacing-md);
+            font-size: 1.5rem;
+        }
+        
+        .service-card h3 {
+            margin-bottom: var(--spacing-sm);
+            color: var(--primary-dark);
+        }
+        
+        .service-details {
+            margin-top: var(--spacing-md);
+        }
+        
+        .service-details ul {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .service-details li {
+            margin-bottom: var(--spacing-xs);
+            position: relative;
+            padding-left: var(--spacing-md);
+        }
+        
+        .service-details li::before {
+            content: '\2022'; /* Bullet point */
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .service-price {
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .approach-section {
+            background-color: var(--bg-light);
+        }
+        
+        .approach-card {
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+        
+        .approach-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .approach-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        @media (max-width: 768px) {
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Oasis of Well Being</a>
+            </div>
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link active">Services</a></li>
+                    <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="booking.html" class="nav-link book-now">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>My Services</h1>
+            </div>
+        </section>
+
+        <section class="services-section">
+            <div class="container">
+                <div class="section-intro text-center">
+                    <h2>How I Can Help</h2>
+                    <p>Here are the ways we can work together:</p>
+                </div>
+                
+                <div class="service-grid">
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1573497620292-4c934913e7a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Individual Therapy Session" loading="lazy">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <h3>One-on-One Talks</h3>
+                            <p>Private conversations about what's on your mind.</p>
+                            <div class="service-details">
+                                <h4>Good for:</h4>
+                                <ul>
+                                    <li>Worry and stress</li>
+                                    <li>Feeling down</li>
+                                    <li>Tough experiences</li>
+                                </ul>
+                                <div class="service-price">
+                                    50-minute session: $150
+                                </div>
+                                <a href="booking.html" class="btn btn-primary">Book a Session</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1516205651411-aef33a44f7c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Couples Therapy Session" loading="lazy">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3>Couples Talks</h3>
+                            <p>Help for couples to improve their relationship.</p>
+                            <div class="service-details">
+                                <h4>Good for:</h4>
+                                <ul>
+                                    <li>Better communication</li>
+                                    <li>Building trust</li>
+                                    <li>Solving problems</li>
+                                </ul>
+                                <div class="service-price">
+                                    80-minute session: $190
+                                </div>
+                                <a href="booking.html" class="btn btn-primary">Book a Session</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1529333166437-4c934913e7a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Group Therapy Session" loading="lazy">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Group Talks</h3>
+                            <p>Connect with others facing similar challenges.</p>
+                            <div class="service-details">
+                                <h4>Current groups:</h4>
+                                <ul>
+                                    <li>Worry management</li>
+                                    <li>Grief support</li>
+                                    <li>Young adults</li>
+                                </ul>
+                                <div class="service-price">
+                                    90-minute session: $60 per person
+                                </div>
+                                <a href="contact.html" class="btn btn-primary">Inquire About Groups</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Online Therapy Session" loading="lazy">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <h3>Online Chats</h3>
+                            <p>Video sessions from your home.</p>
+                            <div class="service-details">
+                                <h4>Benefits:</h4>
+                                <ul>
+                                    <li>Convenient scheduling</li>
+                                    <li>No travel</li>
+                                    <li>Private and secure</li>
+                                </ul>
+                                <div class="service-price">
+                                    50-minute session: $140
+                                </div>
+                                <a href="booking.html" class="btn btn-primary">Book a Session</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1609234680415-f5b4e4d5d5bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="EMDR Therapy Session" loading="lazy">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <h3>Memory Processing</h3>
+                            <p>Help with difficult memories.</p>
+                            <div class="service-details">
+                                <h4>Helps with:</h4>
+                                <ul>
+                                    <li>Trauma healing</li>
+                                    <li>Reducing fears</li>
+                                    <li>Building self-worth</li>
+                                </ul>
+                                <div class="service-price">
+                                    80-minute session: $180
+                                </div>
+                                <a href="booking.html" class="btn btn-primary">Book a Session</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1620147461831-a97b99ade1d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Mindfulness Workshop" loading="lazy">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3>Workshops</h3>
+                            <p>Learn skills in a group setting.</p>
+                            <div class="service-details">
+                                <h4>Topics include:</h4>
+                                <ul>
+                                    <li>Stress Management</li>
+                                    <li>Mindfulness</li>
+                                    <li>Healthy Relationships</li>
+                                </ul>
+                                <div class="service-price">
+                                    $40-$120 per workshop
+                                </div>
+                                <a href="contact.html" class="btn btn-primary">Inquire About Workshops</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services-section approach-section">
+            <div class="container">
+                <h2 class="text-center">How I Work</h2>
+                
+                <div class="approach-grid">
+                    <div class="approach-card">
+                        <div class="approach-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Positive Thinking</h3>
+                        <p>Learn to change unhelpful thoughts.</p>
+                    </div>
+                    
+                    <div class="approach-card">
+                        <div class="approach-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Memory Healing</h3>
+                        <p>Process difficult experiences gently.</p>
+                    </div>
+                    
+                    <div class="approach-card">
+                        <div class="approach-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Mindfulness</h3>
+                        <p>Stay present and reduce stress.</p>
+                    </div>
+                    
+                    <div class="approach-card">
+                        <div class="approach-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Practical Solutions</h3>
+                        <p>Focus on goals and how to reach them.</p>
+                    </div>
+                    
+                    <div class="approach-card">
+                        <div class="approach-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Building Stronger Relationships</h3>
+                        <p>Improve your relationships with others.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="insurance-section services-section">
+            <div class="container">
+                <h2 class="text-center">Payment Info</h2>
+                <div class="insurance-content">
+                    <div class="insurance-info">
+                        <h3>Insurance</h3>
+                        <p>I work with these insurance plans:</p>
+                        <ul class="insurance-list">
+                            <li>Blue Cross Blue Shield PPO</li>
+                            <li>Aetna</li>
+                            <li>Cigna</li>
+                            <li>United Healthcare</li>
+                            <li>Medicare</li>
+                        </ul>
+                        <p>If you have different insurance, I can give you a receipt that you might be able to use for reimbursement.</p>
+                        
+                        <h3>How to Pay</h3>
+                        <p>If you're paying yourself, I accept:</p>
+                        <ul>
+                            <li>Credit/debit cards</li>
+                            <li>Health Savings Accounts (HSA)</li>
+                            <li>Flexible Spending Accounts (FSA)</li>
+                        </ul>
+                        <p>Payment is due after each session. If money is tight, let me know and we might be able to work something out.</p>
+                    </div>
+                    <div class="insurance-cta">
+                        <h3>Have Questions?</h3>
+                        <p>Insurance can be confusing. If you're not sure about anything, just ask!</p>
+                        <a href="contact.html" class="btn btn-primary">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Take the First Step?</h2>
+                    <p>Reaching out for support is a sign of strength, not weakness. I'm here to help you navigate life's challenges and discover your path to emotional wellness.</p>
+                    <a href="booking.html" class="btn btn-primary">Schedule Your First Session</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html">Oasis of Well Being</a>
+                    <p>Creating space for healing and growth</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="booking.html">Book Now</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Information</h3>
+                    <address>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Serenity Lane, Suite 101<br>Wellness City, WC 12345</p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+15551234567">(555) 123-4567</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@oasisofwellbeing.com">info@oasisofwellbeing.com</a></p>
+                    </address>
+                </div>
+                <div class="footer-hours">
+                    <h3>Office Hours</h3>
+                    <ul class="hours-list">
+                        <li><span>Monday - Friday:</span> 9:00 AM - 7:00 PM</li>
+                        <li><span>Saturday:</span> 10:00 AM - 3:00 PM</li>
+                        <li><span>Sunday:</span> Closed</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2025 Oasis of Well Being. All rights reserved.</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

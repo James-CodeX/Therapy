@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Oasis of Well Being</title>
+    <meta name="description" content="Find answers to frequently asked questions about therapy services, insurance, confidentiality, and what to expect in your sessions.">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        /* Additional styles specific to FAQ page */
+
+        
+        .faq-section {
+            padding: var(--spacing-xl) 0;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .category-btn {
+            background-color: var(--bg-light);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            font-weight: 500;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .faq-item {
+            margin-bottom: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow var(--transition-normal);
+        }
+        
+        .faq-item:hover {
+            box-shadow: var(--shadow-md);
+        }
+        
+        .faq-question {
+            background-color: var(--bg-light);
+            padding: var(--spacing-md);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+        
+        .faq-question::after {
+            content: '\f107'; /* Down arrow */
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            transition: transform var(--transition-normal);
+        }
+        
+        .faq-item.active .faq-question::after {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            background-color: white;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all var(--transition-normal);
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: var(--spacing-md);
+            max-height: 1000px;
+        }
+        
+        .faq-answer p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .not-finding {
+            text-align: center;
+            margin-top: var(--spacing-xl);
+            padding: var(--spacing-lg);
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius-lg);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Oasis of Well Being</a>
+            </div>
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="faq.html" class="nav-link active">FAQ</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="booking.html" class="nav-link book-now">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Common Questions</h1>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container">
+                <div class="faq-container">
+                    <div class="faq-categories">
+                        <button class="category-btn active" data-category="all">All Questions</button>
+                        <button class="category-btn" data-category="therapy">About Therapy</button>
+                        <button class="category-btn" data-category="sessions">Sessions & Process</button>
+                        <button class="category-btn" data-category="payment">Insurance & Payment</button>
+                        <button class="category-btn" data-category="policies">Policies</button>
+                    </div>
+                    
+                    <div class="faq-list">
+                        <!-- About Therapy -->
+                        <div class="faq-item" data-category="therapy">
+                            <div class="faq-question">How do I know if therapy would help me?</div>
+                            <div class="faq-answer">
+                                <p>If you're feeling stressed, sad, or need support with challenges, talking can help. Schedule a first chat to see if it's right for you.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="therapy">
+                            <div class="faq-question">What's the difference between therapists, counselors, and psychiatrists?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li><strong>Therapist:</strong> Helps with emotional and mental health</li>
+                                    <li><strong>Counselor:</strong> Focuses on specific life challenges</li>
+                                    <li><strong>Psychiatrist:</strong> Doctor who can prescribe medication</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="therapy">
+                            <div class="faq-question">How long will therapy take?</div>
+                            <div class="faq-answer">
+                                <p>Specific problems may need 6-8 sessions. Ongoing challenges might take longer. We'll check in regularly and you decide when you're ready to stop.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="therapy">
+                            <div class="faq-question">Is therapy confidential?</div>
+                            <div class="faq-answer">
+                                <p>Yes, with limited exceptions:</p>
+                                <ul>
+                                    <li>Risk of harm to self or others</li>
+                                    <li>Child or vulnerable adult abuse</li>
+                                    <li>Court orders</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Sessions & Process -->
+                        <div class="faq-item" data-category="sessions">
+                            <div class="faq-question">What happens in our first meeting?</div>
+                            <div class="faq-answer">
+                                <p>Our first meeting is mostly about getting to know each other. We'll talk about:</p>
+                                <ul>
+                                    <li>What's bringing you in and how I might help</li>
+                                    <li>A bit about your life and background</li>
+                                    <li>How I work and what to expect</li>
+                                    <li>Practical stuff like scheduling and payment</li>
+                                </ul>
+                                <p>This first chat helps us see if we're a good match to work together. You can ask me any questions you have about how things work.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="sessions">
+                            <div class="faq-question">How often would we meet?</div>
+                            <div class="faq-answer">
+                                <p>Most people start with once a week, which gives us regular time to talk and work on things. As you start feeling better, we might space things out to every other week or once a month.</p>
+                                <p>We can figure out what works best for your schedule and needs when we first meet, and we can always change it if needed.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="sessions">
+                            <div class="faq-question">Do I need to prepare before our sessions?</div>
+                            <div class="faq-answer">
+                                <p>You don't need to do anything special to prepare. Some people find it helpful to:</p>
+                                <ul>
+                                    <li>Think about what they'd like to talk about that day</li>
+                                    <li>Notice any important things that happened since last time</li>
+                                    <li>Arrive a few minutes early to settle in</li>
+                                </ul>
+                                <p>But really, just come as you are. There's no right or wrong way to do this.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="sessions">
+                            <div class="faq-question">What's the difference between meeting in person and online?</div>
+                            <div class="faq-answer">
+                                <p>Both ways work well, but they're a bit different:</p>
+                                <p><strong>Meeting in my office:</strong></p>
+                                <ul>
+                                    <li>We get to talk face-to-face</li>
+                                    <li>You have a special place just for our conversations</li>
+                                    <li>Some people find it easier to focus</li>
+                                </ul>
+                                <p><strong>Meeting online:</strong></p>
+                                <ul>
+                                    <li>No travel time - talk from wherever you are</li>
+                                    <li>You can be in your own comfortable space</li>
+                                    <li>Some people find it easier to open up</li>
+                                    <li>We use a secure video system to protect your privacy</li>
+                                </ul>
+                                <p>Both ways can be helpful - it's really about what works best for you.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Insurance & Payment -->
+                        <div class="faq-item" data-category="payment">
+                            <div class="faq-question">Do you accept insurance?</div>
+                            <div class="faq-answer">
+                                <p>Yes, I am an in-network provider with several insurance plans, including:</p>
+                                <ul>
+                                    <li>Blue Cross Blue Shield</li>
+                                    <li>Aetna</li>
+                                    <li>Cigna</li>
+                                    <li>United Healthcare</li>
+                                    <li>Medicare</li>
+                                </ul>
+                                <p>For other insurance providers, I can provide a superbill that you can submit to your insurance for potential out-of-network reimbursement. I recommend contacting your insurance company directly to verify your mental health benefits, including coverage for outpatient psychotherapy.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="payment">
+                            <div class="faq-question">What are your session fees?</div>
+                            <div class="faq-answer">
+                                <p>My standard fees are:</p>
+                                <ul>
+                                    <li>Initial Consultation (60 minutes): $175</li>
+                                    <li>Individual Therapy (50 minutes): $150</li>
+                                    <li>Couples Therapy (80 minutes): $190</li>
+                                    <li>EMDR Therapy (80 minutes): $180</li>
+                                    <li>Group Therapy (90 minutes): $60 per person</li>
+                                </ul>
+                                <p>I offer a limited number of sliding scale spots for clients experiencing financial hardship. Please inquire about availability during our initial contact.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="payment">
+                            <div class="faq-question">What forms of payment do you accept?</div>
+                            <div class="faq-answer">
+                                <p>I accept the following payment methods:</p>
+                                <ul>
+                                    <li>Credit/Debit Cards</li>
+                                    <li>Health Savings Accounts (HSA)</li>
+                                    <li>Flexible Spending Accounts (FSA)</li>
+                                    <li>PayPal</li>
+                                    <li>Venmo</li>
+                                </ul>
+                                <p>Payment is due at the time of service. For clients using insurance, copayments or coinsurance are collected at each session.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Policies -->
+                        <div class="faq-item" data-category="policies">
+                            <div class="faq-question">What is your cancellation policy?</div>
+                            <div class="faq-answer">
+                                <p>I require 24 hours' notice for cancellations or rescheduling. Sessions cancelled with less than 24 hours' notice will be charged the full session fee, except in cases of emergency or illness.</p>
+                                <p>This policy is in place because your appointment time is reserved exclusively for you. With adequate notice, I can often offer that time to another client who may be waiting for an appointment.</p>
+                                <p>Please note that insurance companies typically do not reimburse for missed sessions, so you would be responsible for the full fee.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="policies">
+                            <div class="faq-question">How do I schedule an appointment?</div>
+                            <div class="faq-answer">
+                                <p>You can schedule an appointment in several ways:</p>
+                                <ul>
+                                    <li>Use the online booking system on this website</li>
+                                    <li>Call the office at (555) 123-4567</li>
+                                    <li>Email info@oasisofwellbeing.com</li>
+                                    <li>Complete the contact form on the Contact page</li>
+                                </ul>
+                                <p>For new clients, I'll conduct a brief phone consultation (10-15 minutes) before scheduling your first appointment to ensure my services align with your needs.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="policies">
+                            <div class="faq-question">What if I need to contact you between sessions?</div>
+                            <div class="faq-answer">
+                                <p>You can reach me by phone or email for brief communications between sessions, such as scheduling changes or quick updates. I typically respond within 24 business hours.</p>
+                                <p>Please note that email and text messages are not completely secure forms of communication, so I recommend limiting the sensitive information shared through these channels.</p>
+                                <p>If you're experiencing a crisis or emergency, please call 911, go to your nearest emergency room, or contact the National Suicide Prevention Lifeline at 988 or 1-800-273-8255.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="not-finding">
+                        <h3>Don't see your question?</h3>
+                        <p>If you have a question that isn't answered here, please don't hesitate to reach out.</p>
+                        <a href="contact.html" class="btn btn-primary">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html">Oasis of Well Being</a>
+                    <p>Creating space for healing and growth</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="booking.html">Book Now</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Information</h3>
+                    <address>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Serenity Lane, Suite 101<br>Wellness City, WC 12345</p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+15551234567">(555) 123-4567</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@oasisofwellbeing.com">info@oasisofwellbeing.com</a></p>
+                    </address>
+                </div>
+                <div class="footer-hours">
+                    <h3>Office Hours</h3>
+                    <ul class="hours-list">
+                        <li><span>Monday - Friday:</span> 9:00 AM - 7:00 PM</li>
+                        <li><span>Saturday:</span> 10:00 AM - 3:00 PM</li>
+                        <li><span>Sunday:</span> Closed</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2025 Oasis of Well Being. All rights reserved.</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ accordion functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const faqItem = question.parentElement;
+                    faqItem.classList.toggle('active');
+                });
+            });
+            
+            // FAQ category filtering
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    const category = button.dataset.category;
+                    
+                    // Show/hide FAQ items based on category
+                    faqItems.forEach(item => {
+                        if (category === 'all' || item.dataset.category === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

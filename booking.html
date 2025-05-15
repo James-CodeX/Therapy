@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment - Oasis of Well Being</title>
+    <meta name="description" content="Schedule a therapy session with our licensed therapist. Easy online booking for new and returning clients.">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css' rel='stylesheet'>
+    <style>
+        /* Additional styles specific to Booking page */
+
+        
+        .booking-section {
+            padding: var(--spacing-xl) 0;
+        }
+        
+        .booking-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .booking-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+        }
+        
+        .booking-steps::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--bg-dark);
+            z-index: 1;
+        }
+        
+        .booking-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            width: 25%;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            border: 2px solid var(--bg-dark);
+            transition: all var(--transition-normal);
+        }
+        
+        .booking-step.active .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .booking-step.completed .step-number {
+            background-color: var(--primary-dark);
+            color: white;
+            border-color: var(--primary-dark);
+        }
+        
+        .step-label {
+            font-weight: 500;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .booking-content {
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        #booking-calendar {
+            height: 500px;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .fc-theme-standard .fc-scrollgrid {
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+        }
+        
+        .fc .fc-button-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .fc .fc-button-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+        
+        .fc .fc-button-primary:disabled {
+            background-color: var(--primary-light);
+            border-color: var(--primary-light);
+        }
+        
+        .fc-day-today {
+            background-color: rgba(94, 139, 126, 0.1) !important;
+        }
+        
+        #time-slots-section {
+            margin-top: var(--spacing-lg);
+            display: none;
+        }
+        
+        #time-slots-section.visible {
+            display: block;
+        }
+        
+        #selected-date {
+            margin-bottom: var(--spacing-md);
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+        
+        #available-time-slots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .time-slot {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--primary-color);
+            border-radius: var(--border-radius-md);
+            background-color: white;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+        
+        .time-slot:hover {
+            background-color: var(--primary-light);
+            color: white;
+        }
+        
+        .time-slot.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .no-slots {
+            font-style: italic;
+            color: var(--text-light);
+        }
+        
+        #booking-form {
+            display: none;
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--bg-light);
+        }
+        
+        #booking-form.visible {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--bg-dark);
+            border-radius: var(--border-radius-sm);
+            font-family: var(--body-font);
+            transition: border-color var(--transition-fast);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+        
+        .form-check {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .form-check input {
+            margin-top: 0.25rem;
+            margin-right: var(--spacing-sm);
+        }
+        
+        .error {
+            border-color: var(--error) !important;
+        }
+        
+        .error-message {
+            color: var(--error);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+        
+        #booking-success {
+            display: none;
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--success);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-md);
+            text-align: center;
+        }
+        
+        #booking-success h3 {
+            color: var(--success);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .booking-info {
+            background-color: var(--bg-light);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            margin-top: var(--spacing-lg);
+        }
+        
+        .info-item {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .info-item h3 {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+            color: var(--primary-dark);
+        }
+        
+        .info-item i {
+            margin-right: var(--spacing-sm);
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .booking-steps {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--spacing-sm);
+            }
+            
+            .booking-steps::before {
+                display: none;
+            }
+            
+            .booking-step {
+                flex-direction: row;
+                width: 100%;
+                margin-bottom: var(--spacing-xs);
+            }
+            
+            .step-number {
+                margin-bottom: 0;
+                margin-right: var(--spacing-sm);
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Oasis of Well Being</a>
+            </div>
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="booking.html" class="nav-link book-now active">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Book a Chat</h1>
+            </div>
+        </section>
+
+        <section class="booking-section">
+            <div class="container">
+                <div class="booking-container">
+                    <div class="booking-steps">
+                        <div class="booking-step active">
+                            <div class="step-number">1</div>
+                            <div class="step-label">Select Date</div>
+                        </div>
+                        <div class="booking-step">
+                            <div class="step-number">2</div>
+                            <div class="step-label">Choose Time</div>
+                        </div>
+                        <div class="booking-step">
+                            <div class="step-number">3</div>
+                            <div class="step-label">Your Information</div>
+                        </div>
+                        <div class="booking-step">
+                            <div class="step-number">4</div>
+                            <div class="step-label">Confirmation</div>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-content">
+                        <h2>Select an Appointment Date</h2>
+                        <p>Choose a date from the calendar below to see available time slots. Dates with available appointments are highlighted.</p>
+                        
+                        <div id="booking-calendar"></div>
+                        
+                        <div id="time-slots-section" class="hidden">
+                            <h3>Available Times for <span id="selected-date"></span></h3>
+                            <p>Please select a time slot that works for you:</p>
+                            <div id="available-time-slots"></div>
+                            
+                            <form id="booking-form">
+                                <h3>Your Information</h3>
+                                <p>Please provide your details to complete the booking:</p>
+                                
+                                <input type="hidden" id="selected-date-input" name="appointment_date">
+                                <input type="hidden" id="selected-time" name="appointment_time">
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="first-name">First Name *</label>
+                                        <input type="text" id="first-name" name="first_name" class="form-control" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="last-name">Last Name *</label>
+                                        <input type="text" id="last-name" name="last_name" class="form-control" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="email">Email *</label>
+                                        <input type="email" id="email" name="email" class="form-control" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="phone">Phone *</label>
+                                        <input type="tel" id="phone" name="phone" class="form-control" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="service-type">Service Type *</label>
+                                    <select id="service-type" name="service_type" class="form-control" required>
+                                        <option value="">Please select</option>
+                                        <option value="individual">Individual Therapy (50 min)</option>
+                                        <option value="couples">Couples Therapy (80 min)</option>
+                                        <option value="emdr">EMDR Therapy (80 min)</option>
+                                        <option value="initial">Initial Consultation (60 min)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="client-type">Are you a new or returning client? *</label>
+                                    <select id="client-type" name="client_type" class="form-control" required>
+                                        <option value="">Please select</option>
+                                        <option value="new">New Client</option>
+                                        <option value="returning">Returning Client</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="notes">Additional Notes (optional)</label>
+                                    <textarea id="notes" name="notes" class="form-control" placeholder="Please share any information that would be helpful for me to know before our session."></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="insurance">Insurance Information (if applicable)</label>
+                                    <input type="text" id="insurance" name="insurance" class="form-control" placeholder="Insurance provider and member ID">
+                                </div>
+                                
+                                <div class="form-check">
+                                    <input type="checkbox" id="policy-agreement" name="policy_agreement" required>
+                                    <label for="policy-agreement">I understand the <a href="#" target="_blank">cancellation policy</a> (24-hour notice required) and agree to the <a href="#" target="_blank">terms of service</a>. *</label>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary">Confirm Booking</button>
+                            </form>
+                        </div>
+                        
+                        <div id="booking-success">
+                            <h3><i class="fas fa-check-circle"></i> Appointment Booked Successfully!</h3>
+                            <p>Thank you for scheduling your appointment. A confirmation email has been sent to your email address with all the details.</p>
+                            <div class="appointment-details">
+                                <p><strong>Date:</strong> <span id="confirm-date"></span></p>
+                                <p><strong>Time:</strong> <span id="confirm-time"></span></p>
+                                <p><strong>Service:</strong> <span id="confirm-service"></span></p>
+                            </div>
+                            <p>If you need to reschedule or cancel your appointment, please contact us at least 24 hours in advance.</p>
+                            <a href="index.html" class="btn btn-primary">Return to Home</a>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-info">
+                        <div class="info-item">
+                            <h3><i class="fas fa-info-circle"></i> Before Your First Session</h3>
+                            <p>For new clients, please arrive 15 minutes early to complete intake paperwork, or download and complete the forms from the website in advance.</p>
+                        </div>
+                        
+                        <div class="info-item">
+                            <h3><i class="fas fa-credit-card"></i> Payment Information</h3>
+                            <p>Payment is due at the time of service. We accept credit/debit cards, HSA/FSA cards, and insurance. Please bring your insurance card to your first appointment if applicable.</p>
+                        </div>
+                        
+                        <div class="info-item">
+                            <h3><i class="fas fa-clock"></i> Cancellation Policy</h3>
+                            <p>We require 24 hours' notice for cancellations or rescheduling. Late cancellations or no-shows will be charged the full session fee, except in cases of emergency.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html">Oasis of Well Being</a>
+                    <p>Creating space for healing and growth</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="booking.html">Book Now</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Information</h3>
+                    <address>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Serenity Lane, Suite 101<br>Wellness City, WC 12345</p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+15551234567">(555) 123-4567</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@oasisofwellbeing.com">info@oasisofwellbeing.com</a></p>
+                    </address>
+                </div>
+                <div class="footer-hours">
+                    <h3>Office Hours</h3>
+                    <ul class="hours-list">
+                        <li><span>Monday - Friday:</span> 9:00 AM - 7:00 PM</li>
+                        <li><span>Saturday:</span> 10:00 AM - 3:00 PM</li>
+                        <li><span>Sunday:</span> Closed</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2025 Oasis of Well Being. All rights reserved.</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
+    <script src="js/main.js"></script>
+    <script src="js/booking.js"></script>
+</body>
+</html>
